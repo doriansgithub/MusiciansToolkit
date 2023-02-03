@@ -247,7 +247,7 @@ class JamSessionViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         do {
             let audioFile = try AKAudioFile(readFileName: "\(name).wav")
-            musicModel.audioDevice.notePlayer?.load(audioFile: audioFile)
+			try musicModel.audioDevice.notePlayer?.load(audioFile: audioFile)
             musicModel.audioDevice.notePlayer?.play()
         } catch {
             print(error)

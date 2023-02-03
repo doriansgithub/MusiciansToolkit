@@ -93,8 +93,8 @@ class TunerViewController : UIViewController, TunerDelegate {
         //Ensure correct microphone input (fixes noise bug)
         if let inputs = AudioKit.inputDevices {
             do {
-                try AudioKit.setInputDevice(inputs[0])
-                try musicModel.audioDevice.microphoneInput.setDevice(inputs[0])
+                try? AudioKit.setInputDevice(inputs[0])
+                try? musicModel.audioDevice.microphoneInput.setDevice(inputs[0])
             } catch {
                 print(error)
             }

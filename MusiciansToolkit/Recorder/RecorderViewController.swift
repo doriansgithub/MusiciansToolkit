@@ -72,8 +72,8 @@ class RecorderViewController : UIViewController, AVAudioPlayerDelegate {
         nodeOutputPlot.pause()
         
         if let file = recorder.audioFile {
-            musicModel.audioDevice.player?.load(audioFile: file)
-        }
+			try? musicModel.audioDevice.player?.load(audioFile: file)
+		}
         
         //Fit entire plot on screen
         fileWaveform.setRollingHistoryLength(fileWaveform.maximumRollingHistoryLength())
@@ -212,7 +212,7 @@ class RecorderViewController : UIViewController, AVAudioPlayerDelegate {
             nodeOutputPlot.pause()
             
             let recording = recorder.audioFile!
-            musicModel.audioDevice.player?.load(audioFile: recording)
+            try? musicModel.audioDevice.player?.load(audioFile: recording)
             
             //Prompt for recording name
             //Recording was successful
@@ -291,7 +291,7 @@ class RecorderViewController : UIViewController, AVAudioPlayerDelegate {
             musicModel.audioDevice.player?.stop()
             
             let avFile = try AVAudioFile(forReading: url)
-            musicModel.audioDevice.player?.load(audioFile: avFile)
+			try? musicModel.audioDevice.player?.load(audioFile: avFile)
             
             let ezFile = EZAudioFile(url: url)
             if let data = ezFile?.getWaveformData() {

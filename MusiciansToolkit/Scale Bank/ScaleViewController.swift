@@ -38,7 +38,7 @@ class ScaleViewController : UIViewController {
             do {
                 try audioFile =
                     AKAudioFile(readFileName: "\(name!).wav")
-                musicModel.audioDevice.player?.load(audioFile: audioFile!)
+                try musicModel.audioDevice.player?.load(audioFile: audioFile!)
                 musicModel.audioDevice.player?.play()
             } catch {
                 print(error)
