@@ -91,9 +91,9 @@ class TunerViewController : UIViewController, TunerDelegate {
         pitchView.sendSubviewToBack(pitchPercentageView!)
         
         //Ensure correct microphone input (fixes noise bug)
-        if let inputs = AudioKit.inputDevices {
+        if let inputs = AKManager.inputDevices {
             do {
-                try? AudioKit.setInputDevice(inputs[0])
+                try? AKManager.setInputDevice(inputs[0])
                 try? musicModel.audioDevice.microphoneInput.setDevice(inputs[0])
             } catch {
                 print(error)

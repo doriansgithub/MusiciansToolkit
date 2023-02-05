@@ -36,7 +36,7 @@ class ChordViewController : UIViewController {
         if (name != nil) {
             do {
                 try audioFile = AKAudioFile(readFileName: "\(name!).wav")
-				try? try! musicModel.audioDevice.player?.load(audioFile: audioFile!)
+				try? musicModel.audioDevice.player?.load(audioFile: audioFile!)
                 musicModel.audioDevice.player?.play()
             } catch {
                 print(error)

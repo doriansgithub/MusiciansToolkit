@@ -48,7 +48,7 @@ class Audio {
         mixer?.connect(input: metronome?.node)
         mixer?.connect(input: player)
         
-        AudioKit.output = mixer
+		AKManager.output = mixer
         AKSettings.audioInputEnabled = true
         
         do {
@@ -57,7 +57,7 @@ class Audio {
             if !AKSettings.headPhonesPlugged {
                 try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
             }
-            try AudioKit.start()
+            try AKManager.start()
         } catch {
             print(error)
         }
